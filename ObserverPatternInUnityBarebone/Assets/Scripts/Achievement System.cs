@@ -11,7 +11,7 @@ public class AchievementSystem : MonoBehaviour, Observer
   }
 
   void Start() {
-    foreach(SubjectBeingObserved observable in FindObjectOfType<SubjectBeingObserved>()) {
+    foreach (SubjectBeingObserved observable in FindObjectsOfType<SubjectBeingObserved>()) {
       observable.AddObserver(this);
     }
   }
