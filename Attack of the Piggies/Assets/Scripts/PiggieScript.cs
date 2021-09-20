@@ -9,6 +9,7 @@ public class PiggieScript : SubjectBeingObserved
   private Transform cannonSprite;
   private CircleCollider2D col;
   private bool notDone;
+  private float timer;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class PiggieScript : SubjectBeingObserved
       rb2d.gravityScale = 0;
 
       notDone = true;
+      timer = 10;
     }
 
 
@@ -48,6 +50,15 @@ public class PiggieScript : SubjectBeingObserved
 
         Debug.Log("Fired");
         notDone= false;
+      }
+
+      if(!notDone) {
+        timer -= Time.deltaTime;
+        Debug.Log(timer);
+      }
+
+      if(timer < 0) {
+        gameObject.SetActive(false);
       }
     }
 }
