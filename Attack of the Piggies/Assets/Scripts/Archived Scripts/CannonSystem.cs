@@ -33,6 +33,9 @@ public class CannonSystem : MonoBehaviour, Observer
       if (notificationType == NotificationType.PiggieFired) {
         Debug.Log("Notified");
         GameObject newPig = Instantiate(pigPrefab);
+        foreach (SubjectBeingObserved subject in FindObjectsOfType<SubjectBeingObserved>()) {
+          subject.AddObserver(this);
+        }
       }
     }
 }
