@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class ExplosionScript : MonoBehaviour
 {
-  private float timer;
-    void Start() {
-      timer = 0.5f;
-    }
-
-
     void Update() {
-      timer -= Time.deltaTime;
-
-      if (timer < 0) {
-        Destroy(gameObject);
-      }
+      Destroy(gameObject, 0.1f);
     }
 }

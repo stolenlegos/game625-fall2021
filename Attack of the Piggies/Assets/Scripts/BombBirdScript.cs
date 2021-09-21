@@ -14,8 +14,8 @@ public class BombBirdScript : MonoBehaviour
 
     void Update() {
       if (hit) {
-        Instantiate(explosionPrefab);
-        Destroy(gameObject, transform.position);
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
       }
     }
 

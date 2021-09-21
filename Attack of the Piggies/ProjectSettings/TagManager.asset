@@ -8,6 +8,7 @@ TagManager:
   - usedPigs
   - BirdOne
   - BirdTwo
+  - BombBird
   layers:
   - Default
   - TransparentFX

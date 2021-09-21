@@ -11,6 +11,7 @@ public class PiggieScriptFinal : MonoBehaviour, Observer
   private Rigidbody2D rb2d;
   private bool notDone;
   private float timer;
+  private Collider2D col;
 
     void Start() {
       foreach (SubjectBeingObserved subject in FindObjectsOfType<SubjectBeingObserved>()) {
@@ -19,10 +20,12 @@ public class PiggieScriptFinal : MonoBehaviour, Observer
 
       rb2d = GetComponent<Rigidbody2D>();
       mainCam = GameObject.Find("Camera").GetComponent<Camera>();
+      col = GetComponent<CircleCollider2D>();
 
       cannonSprite = GameObject.Find("CannonSprite").GetComponent<Transform>();
       transform.SetParent(cannonSprite, true);
       transform.localPosition = new Vector3 (1.467542f, 0.4665815f, 0);
+      col.enabled = false;
 
       notDone = true;
       timer = 10;
@@ -44,20 +47,16 @@ public class PiggieScriptFinal : MonoBehaviour, Observer
     }
 
     public void OnNotify(object obj, NotificationType notificationType) {
-      if(notificationType == NotificationType.PiggieFired) {
+      if(notificationType == NotificationType.PiggieFired && notDone) {
         transform.parent = null;
         rb2d.gravityScale = 1;
+        col.enabled = true;
 
         Vector3 direction = mouseInWorld - transform.position;
         Vector2 directionAndMagnitudeOfForce = new Vector2(direction.x, direction.y);
-        rb2d.AddForce(directionAndMagnitudeOfForce * 375f);
+        rb2d.AddForce(directionAndMagnitudeOfForce * 200f);
 
-        Debug.Log("Fired");
         notDone= false;
-
-        foreach (SubjectBeingObserved subject in FindObjectsOfType<SubjectBeingObserved>()) {
-          subject.RemoveObserver(this);
-        }
       }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SubjectBeingObserved : MonoBehaviour
 {
+
     private List<Observer> _observers = new List<Observer>();
 
     public void AddObserver (Observer observer) {

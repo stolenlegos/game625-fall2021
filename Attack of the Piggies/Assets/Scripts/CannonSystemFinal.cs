@@ -30,8 +30,7 @@ public class CannonSystemFinal : SubjectBeingObserved
       }
 
       if (Input.GetMouseButtonDown(0)) {
-        Debug.Log("Notified");
-        timer = 3f;
+        timer = 12.5f;
         timeOver = false;
         Notify(this, NotificationType.PiggieFired);
       }
@@ -44,8 +43,5 @@ public class CannonSystemFinal : SubjectBeingObserved
         newPig = Instantiate(pigPrefab);
         timeOver = true;
       }
-
-      Debug.Log(timer);
-      Debug.Log(timeOver);
     }
 }
