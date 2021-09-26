@@ -2,24 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicCube : Collectable {
+public class MagicCapsule : Collectable {
   private Collider col;
 
 
     private void Start() {
-        value = 10;
-        damage = 20;
-        collectableName = "Magic Cube";
+      value = 5;
+      damage = 10;
+      collectableName = "Magic Capsule";
     }
 
 
     private void Update() {
-      Spin(50f, 0f, 90f);
+      Spin(200f, 0f, 0f);
     }
 
 
     private void OnTriggerEnter(Collider other) {
-      AddToRepos(NotificationType.MagicCubeCollected, gameObject, "Player", other);
+      AddToRepos(NotificationType.MagicCapsuleCollected, gameObject, "Player", other);
     }
 
 
