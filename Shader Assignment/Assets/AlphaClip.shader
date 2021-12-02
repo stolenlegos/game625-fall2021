@@ -11,6 +11,7 @@ Shader "Demonstration/SoftAlphaClipping" {
       }
 
        Pass {
+         Cull Off
          Blend SrcAlpha OneMinusSrcAlpha
          ZWrite Off
 
